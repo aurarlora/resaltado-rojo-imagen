@@ -1,12 +1,15 @@
 # resaltado-rojo-imagen
 resaltado-rojo-imagen
 
+Se aplicó una segmentación por umbral en el espacio HSV para aislar los tonos rojos. Debido a que el color rojo abarca dos regiones opuestas del eje de tono (Hue), se definieron dos rangos: uno cercano a 0° y otro cercano a 180°, combinados mediante máscaras binarias. Cada rango se definió con pares mínimo-máximo que controlan el tono, la saturación y el valor, permitiendo filtrar los colores deseados con mayor precisión.
+
+Estos pares indican:
+Hue: qué color es (0–180 en OpenCV, donde 0 y 180 son rojo).
+Saturation: qué tan puro es el color (0 es gris, 255 es color intenso).
+Value: qué tan claro u oscuro es (0 es negro, 255 es brillo máximo).
 
 lower_red1 = np.array([0, 20, 20])
 upper_red1 = np.array([4, 255, 255])
-
-lower_red2 = np.array([170, 50, 50])
-upper_red2 = np.array([180, 255, 255])
 
 El color rojo en HSV se localiza en dos rangos de tonalidad (H):
 Primer rango: cerca del 0°.
